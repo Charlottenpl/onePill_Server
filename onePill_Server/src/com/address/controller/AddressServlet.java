@@ -82,6 +82,31 @@ public class AddressServlet extends HttpServlet {
 			}
 			response.getWriter().append(gson.toJson(addressList));
 			break;	
+		case "update":
+			//添加地址
+			String name1 = request.getParameter("name");
+			String phoneNumber1 = request.getParameter("phoneNumber");
+			String address1 = request.getParameter("address");
+			String more1 = request.getParameter("more");
+			String postalCode1 = request.getParameter("postalCode");
+			String userIdString1 = request.getParameter("UserId");
+			int UserId1 = Integer.valueOf(userIdString1);
+			Address address21 = new Address(UserId1, name1, phoneNumber1, address1, more1, postalCode1);
+			System.out.println(address21.toString());
+			//存入数据库
+			try {
+				f = dao.update(address21);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (f) {
+				response.getWriter().append("yes");
+			}else {
+				response.getWriter().append("no");
+			}
+			break;
 		default:
 			break;
 		}
