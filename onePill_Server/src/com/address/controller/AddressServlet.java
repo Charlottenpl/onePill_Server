@@ -93,7 +93,6 @@ public class AddressServlet extends HttpServlet {
 			int UserId1 = Integer.valueOf(userIdString1);
 			Address address21 = new Address(UserId1, name1, phoneNumber1, address1, more1, postalCode1);
 			System.out.println(address21.toString());
-			/* AddressDao dao = new AddressDao(); */
 			//存入数据库
 			try {
 				f = dao.update(address21);
