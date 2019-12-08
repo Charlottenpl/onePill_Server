@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.Article;
+import com.entity.Comment;
 import com.util.DbUtil;
 
 public class ArticleDao {
@@ -39,6 +40,36 @@ public class ArticleDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			DbUtil.close(con);
+		}
+		return null;
+	}
+	public List<Comment> findAllComment(){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		List<Comment> list = new ArrayList<>();
+		ResultSet rs = null;
+		try{
+			con = DbUtil.getCon();
+			String sql = String.format("select * from tbl_comment");
+			// 取消自动提交
+			con.setAutoCommit(false);
+			pstm = con.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				Comment comment = new Comment();
+				comment.setName(rs.getString(1));
+				comment.setCcomment(rs.getString(2));
+//				comment.setHeadImg(rs.getString(3));
+				list.add(comment);
+			}
+			pstm.close();
+			con.commit();
+			rs.close();
+			return list;
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
 			DbUtil.close(con);
 		}
 		return null;
