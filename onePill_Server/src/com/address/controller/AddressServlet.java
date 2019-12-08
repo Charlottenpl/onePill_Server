@@ -38,14 +38,6 @@ public class AddressServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
 		System.out.print("地址服务器");
@@ -61,6 +53,7 @@ public class AddressServlet extends HttpServlet {
 			String userIdString = request.getParameter("UserId");
 			int UserId = Integer.valueOf(userIdString);
 			Address address2 = new Address(UserId, name, phoneNumber, address, more, postalCode);
+			System.out.println(address2.toString());
 			/* AddressDao dao = new AddressDao(); */
 			//存入数据库
 			try {
@@ -88,13 +81,18 @@ public class AddressServlet extends HttpServlet {
 				response.getWriter().append(null);
 			}
 			response.getWriter().append(gson.toJson(addressList));
-			break;
-			
-
+			break;	
 		default:
 			break;
 		}
-		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request,response);		
 	}
 
 }

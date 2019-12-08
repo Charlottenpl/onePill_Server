@@ -17,12 +17,12 @@ public class AddressDao {
 	public boolean add(Address address) throws SQLException {
 		
 		String valuesName = "UserId,name,phoneNumber,address,more,postalCode";
-		String values = address.getUserId()+","
-				+address.getName()+","
-				+address.getPhoneNumber()+","
-				+address.getAddress()+","
-				+address.getMore()+","
-				+address.getPostalCode();
+		String values = "'"+address.getUserId()+"','"
+				+address.getName()+"','"
+				+address.getPhoneNumber()+"','"
+				+address.getAddress()+"','"
+				+address.getMore()+"','"
+				+address.getPostalCode()+"'";
 		
 		Boolean f = false;//操作结果
 		int i = 0;
