@@ -84,6 +84,7 @@ public class AddressServlet extends HttpServlet {
 			break;	
 		case "update":
 			//更新地址
+			int id1 = Integer.parseInt(request.getParameter("Id"));
 			String name1 = request.getParameter("name");
 			String phoneNumber1 = request.getParameter("phoneNumber");
 			String address1 = request.getParameter("address");
@@ -91,7 +92,7 @@ public class AddressServlet extends HttpServlet {
 			String postalCode1 = request.getParameter("postalCode");
 			String userIdString1 = request.getParameter("UserId");
 			int UserId1 = Integer.valueOf(userIdString1);
-			Address address21 = new Address(UserId1, name1, phoneNumber1, address1, more1, postalCode1);
+			Address address21 = new Address(UserId1,id1, name1, phoneNumber1, address1, more1, postalCode1);
 			System.out.println(address21.toString());
 			//存入数据库
 			try {
