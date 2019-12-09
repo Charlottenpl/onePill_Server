@@ -40,7 +40,7 @@ public class AddressServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
-		System.out.print("地址服务器");
+		System.out.println("地址服务器:");
 		String code = request.getParameter("Code");
 		switch (code) {
 		case "add":
@@ -84,16 +84,18 @@ public class AddressServlet extends HttpServlet {
 			break;	
 		case "update":
 			//更新地址
-			int id1 = Integer.parseInt(request.getParameter("Id"));
 			String name1 = request.getParameter("name");
 			String phoneNumber1 = request.getParameter("phoneNumber");
 			String address1 = request.getParameter("address");
 			String more1 = request.getParameter("more");
 			String postalCode1 = request.getParameter("postalCode");
 			String userIdString1 = request.getParameter("UserId");
+			String idString = request.getParameter("Id");
 			int UserId1 = Integer.valueOf(userIdString1);
+			int id1 = Integer.valueOf(idString);
 			Address address21 = new Address(UserId1,id1, name1, phoneNumber1, address1, more1, postalCode1);
-			System.out.println(address21.toString());
+			System.out.println(address21.getName().toString());
+			System.out.println(id1);
 			//存入数据库
 			try {
 				f = dao.update(address21);
