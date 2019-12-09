@@ -10,7 +10,7 @@ import com.util.DbUtil;
 public class CartService {
 	// 添加商品至购物车
 	public int addIntoCart(Cart cart){
-		String where = "cakeId ="+cart.getMedicineid()+" and buyerId ="+cart.getUserid();
+		String where = "medicineid ="+cart.getMedicineid()+" and userid ="+cart.getUserid();
 		Map<String, Object> map = CartDao.checkCartIsExist(where);
 		if (map != null) {// 说明购物车中有这个商品
 			// 修改对应购物车的数量即可

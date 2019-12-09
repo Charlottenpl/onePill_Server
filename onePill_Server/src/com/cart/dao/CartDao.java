@@ -11,14 +11,18 @@ public class CartDao {
 	private static String selectAll = "*";
 	private String selectAllDistinct = "distinct *";
 	// 添加商品至购物车
-	public static int addIntoCart(int cakeId,int buyerId,int count){
-		return DbUtil.insertInto(cartTableName, "cakeId , buyerId , count",cakeId+","+buyerId+","+count);
+	public static int addIntoCart(int medicineid,int userid,int count){
+		return DbUtil.insertInto(cartTableName, "cakeId , buyerId , count",medicineid+","+userid+","+count);
 	}
-	// 根据buyerId,cakeId查询购物车中是否有对应项
+	// 根据userid,medicineid查询购物车中是否有对应项
 	public static Map<String,Object> checkCartIsExist(String where){
 		return DbUtil.findOneByWhere(selectAll, cartTableName, where);
 	}
-	// 根据buyerId查询所有的cartlist
+	/**
+	 * 根据userid查询所有的cartlist
+	 * @param buyerId
+	 * @return
+	 */
 	public static List<Map<String,Object>> findCartsByBuyerId(int buyerId) {
 		return DbUtil.findListByWhere(selectAll, cartTableName, "buyerId ="+buyerId);
 	}
