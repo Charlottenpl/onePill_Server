@@ -79,13 +79,14 @@ public class AddressDao {
 		int i = 0;
 		java.sql.Connection connection = null;
 		PreparedStatement pstm = null;
-		String whereString = "where Id = "+address.getId()+";";
+		String whereString = " where Id = "+address.getId()+";";
 		
 		connection = DbUtil.getCon();
 		String sql = String.format("update tbl_address set "
 				+ "name='%s',phoneNumber='%s',address='%s',more='%s',"
 				+ "postalCode='%s'"+whereString,address.getName(),address.getPhoneNumber(),address.getAddress(),address.getMore(),address.getPostalCode());
 		//取消自动提交
+		System.out.println(sql);
 		connection.setAutoCommit(false);
 		pstm = connection.prepareStatement(sql);
 		i = pstm.executeUpdate();
