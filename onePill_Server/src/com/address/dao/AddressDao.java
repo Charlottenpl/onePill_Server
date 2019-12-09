@@ -79,7 +79,7 @@ public class AddressDao {
 		int i = 0;
 		java.sql.Connection connection = null;
 		PreparedStatement pstm = null;
-		String whereString = "where Id = '"+address.getId()+"';";
+		String whereString = "where Id = "+address.getId()+";";
 		
 		connection = DbUtil.getCon();
 		String sql = String.format("update tbl_address set "
