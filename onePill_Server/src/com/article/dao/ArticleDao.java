@@ -44,14 +44,14 @@ public class ArticleDao {
 		}
 		return null;
 	}
-	public List<Comment> findAllComment(){
+	public List<Comment> findAllComment(int artilceId){
 		Connection con = null;
 		PreparedStatement pstm = null;
 		List<Comment> list = new ArrayList<>();
 		ResultSet rs = null;
 		try{
 			con = DbUtil.getCon();
-			String sql = String.format("select * from tbl_comment");
+			String sql = String.format("select * from tbl_comment where articleId = (%s)",artilceId);
 			// 取消自动提交
 			con.setAutoCommit(false);
 			pstm = con.prepareStatement(sql);
@@ -73,5 +73,30 @@ public class ArticleDao {
 			DbUtil.close(con);
 		}
 		return null;
+	}
+	
+	public Boolean insertComment(String valuesName,String values){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		int i = 0;
+		try{
+			con = DbUtil.getCon();
+			String sql = String.format("insert into tbl_comment (%s) values (%s)",valuesName,values);
+			//取消自动提交
+			con.setAutoCommit(false);
+			pstm = con.prepareStatement(sql);
+			i = pstm.executeUpdate();
+			pstm.close();
+			con.commit();
+			if(i!=0)
+				return true;
+			else
+				return false;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DbUtil.close(con);
+		}
+		return false;
 	}
 }

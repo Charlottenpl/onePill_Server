@@ -35,8 +35,8 @@ public class CommentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		List<Comment> list = new ArticleService().CommentFindAllService();
-		System.out.println(list.get(0).getCcomment());
+		int artilceId = Integer.parseInt(request.getParameter("articleId"));
+		List<Comment> list = new ArticleService().CommentFindAllService(artilceId);
 		response.getWriter().append(new Gson().toJson(list));
 	}
 

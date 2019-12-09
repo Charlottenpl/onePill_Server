@@ -4,7 +4,7 @@ public class Comment {
 	private String name;
     private String ccomment;
     private String headImg;
-
+    private int articleId;
     public Comment() {
     }
 
@@ -12,8 +12,16 @@ public class Comment {
         this.name = name;
         this.ccomment = ccomment;
     }
+    
+    public int getArticleId() {
+		return articleId;
+	}
 
-    public String getName() {
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
+	}
+
+	public String getName() {
         return name;
     }
 
