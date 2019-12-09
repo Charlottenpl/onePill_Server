@@ -3,11 +3,13 @@ package com.user.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.Doctor;
 import com.entity.User;
+import com.user.controller.EditUserServlet;
 import com.util.DbUtil;
 
 public class UserDao {
@@ -121,4 +123,127 @@ public class UserDao {
 		}
 		return null;
 	}
+	
+	/**
+	 * 更改用户昵称
+	 * @throws SQLException 
+	 */
+	public boolean editUserNickName(int UserId,String nickName) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_user set nickName = '"+nickName+"' where id = "+UserId+";";
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
+	
+	
+	/**
+	 * 更改用户手机号
+	 * @throws SQLException 
+	 */
+	public boolean editUserPhone(int UserId,String phone) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_user set phone = '"+phone+"' where id = "+UserId+";";
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
+	
+	/**
+	 * 更改用户密码
+	 * @throws SQLException 
+	 */
+	public boolean editUserPassword(int UserId,String password) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_user set password = '"+password+"' where id = "+UserId+";";
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
+	
+	/**
+	 * 更改用户密码
+	 * @throws SQLException 
+	 */
+	public boolean editUserPID(int UserId,String PID) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_user set PID = '"+PID+"' where id = "+UserId+";";
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
+	
+	/**
+	 * 更改用户头像
+	 * @throws SQLException 
+	 */
+	public boolean editUserHeadimg(int UserId,String headimg) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_user set headimg = '"+headimg+"' where id = "+UserId+";";
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
+	
+	
 }
