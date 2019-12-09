@@ -56,7 +56,7 @@ public class AddressDao {
 		PreparedStatement pstm = null;
 		
 		connection = DbUtil.getCon();
-		String sql = "delete from tbl_address where id="+"'"+Id+"'";
+		String sql = "delete from tbl_address where id="+"'"+Id+"';";
 		//取消自动提交
 		connection.setAutoCommit(false);
 		pstm = connection.prepareStatement(sql);
@@ -79,11 +79,12 @@ public class AddressDao {
 		int i = 0;
 		java.sql.Connection connection = null;
 		PreparedStatement pstm = null;
+		String whereString = "where Id = '"+address.getId()+"';";
 		
 		connection = DbUtil.getCon();
 		String sql = String.format("update tbl_address set "
 				+ "name='%s',phoneNumber='%s',address='%s',more='%s',"
-				+ "postalCode='%s'",address.getName(),address.getPhoneNumber(),address.getAddress(),address.getMore(),address.getPostalCode());
+				+ "postalCode='%s'"+whereString,address.getName(),address.getPhoneNumber(),address.getAddress(),address.getMore(),address.getPostalCode());
 		//取消自动提交
 		connection.setAutoCommit(false);
 		pstm = connection.prepareStatement(sql);
