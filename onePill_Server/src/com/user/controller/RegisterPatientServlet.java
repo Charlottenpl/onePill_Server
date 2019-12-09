@@ -63,7 +63,7 @@ public class RegisterPatientServlet extends HttpServlet {
 		UserService service = new UserService();
 		Boolean isSuccessful = service.RegisterPatientService("nickName,phone,password,PID,headImg,address",
 				"'" + newuser.getNickName() + "','" + newuser.getPhone() + "','" + newuser.getPassword() + "','"
-						+ newuser.getPID() + "','" + request.getContextPath() + "/img/" + "buyer.jpg" + "','"
+						+ newuser.getPID() + "','"+"image/buyer.jpg"+"','"
 						+ newuser.getAddress() + "'");
 		if (isSuccessful) {
 			String result = gson.toJson(true);
