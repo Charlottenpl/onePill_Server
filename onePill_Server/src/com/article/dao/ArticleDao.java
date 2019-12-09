@@ -29,7 +29,7 @@ public class ArticleDao {
 				article.setContent(rs.getString(3));
 				article.setTag(rs.getString(4));
 				article.setTitle(rs.getString(5));
-				article.setWritename(rs.getString(2));
+				article.setWritename(rs.getString(2)); 
 				list.add(article);
 			}
 			pstm.close();
@@ -61,6 +61,7 @@ public class ArticleDao {
 				comment.setName(rs.getString(1));
 				comment.setCcomment(rs.getString(2));
 //				comment.setHeadImg(rs.getString(3));
+				comment.setArticleId(rs.getInt(4));
 				list.add(comment);
 			}
 			pstm.close();

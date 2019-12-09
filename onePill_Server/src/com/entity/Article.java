@@ -18,7 +18,6 @@ public class Article {
 		this.writerName = writerName;
 	}
 	
-	
 	public String getWriteName() {
 		return writerName;
 	}
