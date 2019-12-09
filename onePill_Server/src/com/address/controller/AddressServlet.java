@@ -40,7 +40,7 @@ public class AddressServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
-		System.out.println("地址服务器:");
+		System.out.print("地址服务器");
 		String code = request.getParameter("Code");
 		switch (code) {
 		case "add":
@@ -53,7 +53,7 @@ public class AddressServlet extends HttpServlet {
 			String userIdString = request.getParameter("UserId");
 			int UserId = Integer.valueOf(userIdString);
 			Address address2 = new Address(UserId, name, phoneNumber, address, more, postalCode);
-			System.out.println(address2.getAddress().toString());
+			System.out.println(address2.toString());
 			/* AddressDao dao = new AddressDao(); */
 			//存入数据库
 			try {
@@ -83,7 +83,7 @@ public class AddressServlet extends HttpServlet {
 			response.getWriter().append(gson.toJson(addressList));
 			break;	
 		case "update":
-			//添加地址
+			//更新地址
 			String name1 = request.getParameter("name");
 			String phoneNumber1 = request.getParameter("phoneNumber");
 			String address1 = request.getParameter("address");
@@ -106,6 +106,21 @@ public class AddressServlet extends HttpServlet {
 			}else {
 				response.getWriter().append("no");
 			}
+			break;
+		case "delete":
+			int Id = Integer.parseInt(request.getParameter("Id"));
+			try {
+				f = dao.del(Id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (f) {
+				response.getWriter().append("yes");
+			}else {
+				response.getWriter().append("no");
+			}
+			
 			break;
 		default:
 			break;

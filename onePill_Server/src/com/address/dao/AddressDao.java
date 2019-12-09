@@ -48,7 +48,7 @@ public class AddressDao {
 	}
 	
 	// 删除地址
-	public boolean del(Address address) throws SQLException {
+	public boolean del(int Id) throws SQLException {
 		
 		Boolean f = false;//操作结果
 		int i = 0;
@@ -56,7 +56,7 @@ public class AddressDao {
 		PreparedStatement pstm = null;
 		
 		connection = DbUtil.getCon();
-		String sql = "delete from tbl_address where id="+"'"+address.getId()+"'";
+		String sql = "delete from tbl_address where id="+"'"+Id+"'";
 		//取消自动提交
 		connection.setAutoCommit(false);
 		pstm = connection.prepareStatement(sql);
@@ -152,5 +152,6 @@ public class AddressDao {
 		
 		
 	}
+
 
 }
