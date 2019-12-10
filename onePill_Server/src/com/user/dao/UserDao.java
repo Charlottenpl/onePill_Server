@@ -130,10 +130,12 @@ public class UserDao {
 	 */
 	public boolean editUserNickName(int UserId,String nickName) throws SQLException {
 		boolean f = false;//操作结果
+		System.out.println("更改用户昵称UserId"+UserId+"\n"+nickName);
 		int i = 0;
 		Connection connection = null;
 		PreparedStatement pstmPreparedStatement = null;
 		String sqlString = "update tbl_user set nickName = '"+nickName+"' where id = "+UserId+";";
+		System.out.println(sqlString);
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
