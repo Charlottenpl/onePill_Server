@@ -198,7 +198,7 @@ public class UserDao {
 	}
 	
 	/**
-	 * 更改用户密码
+	 * 更改用户PID
 	 * @throws SQLException 
 	 */
 	public boolean editUserPID(int UserId,String PID) throws SQLException {

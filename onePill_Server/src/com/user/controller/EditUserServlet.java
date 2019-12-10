@@ -38,13 +38,14 @@ public class EditUserServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		System.out.print("用户信息服务器");
 		String code = request.getParameter("Code");
-		int UserId = Integer.valueOf(request.getParameter("UserId"));//request:UserId+要更改的部分,response:返回yes或no
+		int UserId = Integer.valueOf(request.getParameter("UserId"));//request:Code+UserId+要更改的部分,response:返回yes或no
 		
 		System.out.println("Code"+code+"UserId"+UserId);
 		switch (code) {
 		case "nickName":
 			//更新昵称
 			String name1 = request.getParameter("nickName");
+			System.out.println("更改昵称"+name1);
 			//存入数据库
 			try {
 				f = dao.editUserNickName(UserId, name1);
