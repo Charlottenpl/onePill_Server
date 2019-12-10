@@ -9,8 +9,8 @@ public class Doctor {
 	private String PID;
 	private String hospital;
 	private String headImg;
-	private String licence1;
-	private String licence2;
+	private static String licence1;
+	private static String licence2;
 	
 	
 	

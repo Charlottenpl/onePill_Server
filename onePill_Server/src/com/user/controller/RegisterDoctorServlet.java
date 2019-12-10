@@ -4,12 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.entity.Doctor;
 import com.entity.User;
@@ -53,11 +56,15 @@ public class RegisterDoctorServlet extends HttpServlet {
             stringBuffer.append(str);
         }
         Gson gson=new Gson();
-        Doctor newDoctor = gson.fromJson(stringBuffer.toString(),Doctor.class);
+        Doctor newDoctor = gson.fromJson(stringBuffer.toString(),Doctor.class); 
+        String imgFront =  (String) getServletContext().getAttribute("imageFront");
+        String imgReverse =  (String) getServletContext().getAttribute("imageReverse");
+        System.out.println(imgFront);
+        System.out.println(imgReverse);
         Boolean isSuccessful = new UserService().RegisterDoctorService("name,phone,address,password,PID,"
         		+ "hospital,licence1,headImg,licence2", "'"+newDoctor.getName()+"','"+newDoctor.getPhone()
         		+"','"+newDoctor.getAddress()+"','"+newDoctor.getPassword()+"','"+newDoctor.getPID()+"','"+newDoctor.getHospital()
-        		+"','"+null+"','"+null+"','"+null+"'");
+        		+"','"+imgFront+"','"+"image/buyer.jpg"+"','"+imgReverse+"'");
         if(isSuccessful){
 			String result = gson.toJson(true);
 			System.out.println("医生注册成功！");

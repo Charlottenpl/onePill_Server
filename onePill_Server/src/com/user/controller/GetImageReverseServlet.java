@@ -2,8 +2,10 @@ package com.user.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,26 +19,24 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class GetImageFileServlet
+ * Servlet implementation class GetImageReverseServlet
  */
-@WebServlet("/GetImageFileServlet")
-public class GetImageFileServlet extends HttpServlet {
+@WebServlet("/GetImageReverseServlet")
+public class GetImageReverseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public GetImageReverseServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public GetImageFileServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		// Create a factory for disk-based file items
@@ -50,12 +50,22 @@ public class GetImageFileServlet extends HttpServlet {
 			for (FileItem fi : items) {
 				if (fi.isFormField()) {
 					// 表单
-					System.out.println(fi.getFieldName() + ":" + fi.getString());
+					String temp = fi.getString();
+					temp = new String(temp.getBytes("ISO-8859-1"), "UTF-8");
+					System.out.println(fi.getFieldName() + ":" + temp);
 				} else {
 					// 文件
-					String realPath = this.getServletContext().getRealPath("/");
-					System.out.println(realPath);
-					fi.write(new File(realPath + fi.getName()));
+					String name = fi.getName();
+					String rootPath = this.getServletContext().getRealPath("/");
+					File file = new File(rootPath+"image/");//在根路径下创建存放图片的文件夹
+					if(!file.exists())//如果不存在，创建
+						file.mkdirs();
+					File realPath = new File(file,name);//图片的实际路径
+					fi.write(realPath);
+					System.out.println(realPath.toString());
+					String imgLocation = "image/"+name;
+					ServletContext context = getServletContext();
+					context.setAttribute("imageReverse", imgLocation);
 				}
 			}
 		} catch (FileUploadException e) {
@@ -67,14 +77,13 @@ public class GetImageFileServlet extends HttpServlet {
 		}
 		// 返回响应
 		response.getWriter().append("上传成功");
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
