@@ -134,13 +134,14 @@ public class UserDao {
 		int i = 0;
 		Connection connection = null;
 		PreparedStatement pstmPreparedStatement = null;
-		String sqlString = "update tbl_user set nickName = '"+nickName+"' where id = "+UserId+";";
+		String sqlString = "update tbl_user set nickName='"+nickName+"' where Id = "+UserId+";";
 		System.out.println(sqlString);
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
+		connection.commit();
 		if(i!=0)
 			f = true;
 		else
@@ -166,6 +167,7 @@ public class UserDao {
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
+		connection.commit();
 		if(i!=0)
 			f = true;
 		else
@@ -190,6 +192,7 @@ public class UserDao {
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
+		connection.commit();
 		if(i!=0)
 			f = true;
 		else
@@ -214,6 +217,7 @@ public class UserDao {
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
+		connection.commit();
 		if(i!=0)
 			f = true;
 		else
@@ -238,6 +242,7 @@ public class UserDao {
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
+		connection.commit();
 		if(i!=0)
 			f = true;
 		else

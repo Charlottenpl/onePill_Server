@@ -45,10 +45,10 @@ public class EditUserServlet extends HttpServlet {
 		case "nickName":
 			//更新昵称
 			String name1 = request.getParameter("nickName");
-			System.out.println("更改昵称"+name1);
 			//存入数据库
 			try {
 				f = dao.editUserNickName(UserId, name1);
+				System.out.println(f);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
