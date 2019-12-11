@@ -236,7 +236,7 @@ public class UserDao {
 		int i = 0;
 		Connection connection = null;
 		PreparedStatement pstmPreparedStatement = null;
-		String sqlString = "update tbl_user set headimg = '"+headimg+"' where id = "+UserId+";";
+		String sqlString = "update tbl_user set headimg = '"+headimg+"' where id = "+UserId;
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);

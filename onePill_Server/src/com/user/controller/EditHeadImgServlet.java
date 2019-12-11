@@ -42,6 +42,7 @@ public class EditHeadImgServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		// Create a factory for disk-based file items
 		FileItemFactory factory = new DiskFileItemFactory();
+		String imgLocation = null;
 		// Create a new file upload handler
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
@@ -64,7 +65,7 @@ public class EditHeadImgServlet extends HttpServlet {
 					File realPath = new File(file,name);//图片的实际路径
 					fi.write(realPath);
 					System.out.println(realPath.toString());
-					String imgLocation = "image/"+name;
+					imgLocation = "image/"+name;
 					ServletContext context = getServletContext();
 					context.setAttribute("imageFront", imgLocation);
 					UserDao dao = new UserDao();
@@ -80,7 +81,7 @@ public class EditHeadImgServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		// 返回响应
-		response.getWriter().append("上传成功");
+		response.getWriter().append(imgLocation);
 	}
 
 	/**
