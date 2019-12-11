@@ -13,9 +13,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_181"/>
-=======
->>>>>>> 09d83668bdd223c7f4dd9ddc6f09711b7ba7975e
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
