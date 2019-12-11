@@ -17,6 +17,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.user.dao.UserDao;
+
 /**
  * Servlet implementation class EditHeadImgServlet
  */
@@ -65,6 +67,9 @@ public class EditHeadImgServlet extends HttpServlet {
 					String imgLocation = "image/"+name;
 					ServletContext context = getServletContext();
 					context.setAttribute("imageFront", imgLocation);
+					UserDao dao = new UserDao();
+					int UserId = Integer.valueOf(request.getParameter("UserId"));
+					dao.editUserHeadimg(UserId, imgLocation);
 				}
 			}
 		} catch (FileUploadException e) {
