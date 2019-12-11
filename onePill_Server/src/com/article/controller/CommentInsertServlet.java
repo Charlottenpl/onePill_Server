@@ -54,7 +54,7 @@ public class CommentInsertServlet extends HttpServlet {
         Gson gson=new Gson();
         Comment comment = gson.fromJson(stringBuffer.toString(),Comment.class);
         Boolean isSuccessful = new ArticleService().CommentInsertService("name,ccomment,headImg,articleId", "'"+comment.getName()+
-        		"','"+comment.getCcomment()+"','"+null+"','"+comment.getArticleId()+"'");
+        		"','"+comment.getCcomment()+"','"+comment.getHeadImg()+"','"+comment.getArticleId()+"'");
         if(isSuccessful){
 			String result = gson.toJson(true);
 			response.getWriter().append(result);

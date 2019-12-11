@@ -60,7 +60,7 @@ public class ArticleDao {
 				Comment comment = new Comment();
 				comment.setName(rs.getString(1));
 				comment.setCcomment(rs.getString(2));
-//				comment.setHeadImg(rs.getString(3));
+				comment.setHeadImg(rs.getString(3));
 				comment.setArticleId(rs.getInt(4));
 				list.add(comment);
 			}
