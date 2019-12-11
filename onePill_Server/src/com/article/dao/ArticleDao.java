@@ -30,6 +30,7 @@ public class ArticleDao {
 				article.setTag(rs.getString(4));
 				article.setTitle(rs.getString(5));
 				article.setWritename(rs.getString(2)); 
+				article.setHeadImg(rs.getString(6));
 				list.add(article);
 			}
 			pstm.close();
