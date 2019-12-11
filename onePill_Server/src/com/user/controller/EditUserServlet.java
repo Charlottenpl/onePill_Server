@@ -48,7 +48,6 @@ public class EditUserServlet extends HttpServlet {
 			//存入数据库
 			try {
 				f = dao.editUserNickName(UserId, name1);
-				System.out.println(f);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -65,7 +64,7 @@ public class EditUserServlet extends HttpServlet {
 			String phone = request.getParameter("phone");
 			//存入数据库
 			try {
-				f = dao.editUserNickName(UserId, phone);
+				f = dao.editUserPhone(UserId, phone);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
