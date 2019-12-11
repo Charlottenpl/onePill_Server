@@ -3,6 +3,7 @@ package com.entity;
 public class Article {
 	private int id;
 	private String title;
+	private String headImg;
 	private String content;
 	private String tag;
 	private String writerName;
@@ -18,6 +19,14 @@ public class Article {
 		this.writerName = writerName;
 	}
 	
+	public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+    
 	public String getWriteName() {
 		return writerName;
 	}
