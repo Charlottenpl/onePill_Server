@@ -82,6 +82,7 @@ public class EditHeadImgServlet extends HttpServlet {
 		}
 		// 返回响应
 		response.getWriter().append(imgLocation);
+		System.out.println("返回头像地址“"+imgLocation);
 	}
 
 	/**
