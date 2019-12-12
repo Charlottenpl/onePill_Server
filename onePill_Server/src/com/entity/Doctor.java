@@ -8,6 +8,7 @@ public class Doctor {
 	private String password;
 	private String PID;
 	private String hospital;
+	private String tag;
 	private String headImg;
 	private static String licence1;
 	private static String licence2;
@@ -30,6 +31,14 @@ public class Doctor {
 		this.licence1 = licence1;
 		this.licence2 = licence2;
 	}
+	
+	public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 	
 	public int getDoctorId() {
 		return doctorId;

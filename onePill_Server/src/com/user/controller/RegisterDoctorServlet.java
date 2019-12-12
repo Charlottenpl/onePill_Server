@@ -62,9 +62,9 @@ public class RegisterDoctorServlet extends HttpServlet {
         System.out.println(imgFront);
         System.out.println(imgReverse);
         Boolean isSuccessful = new UserService().RegisterDoctorService("name,phone,address,password,PID,"
-        		+ "hospital,licence1,headImg,licence2", "'"+newDoctor.getName()+"','"+newDoctor.getPhone()
+        		+ "hospital,licence1,headImg,licence2,tag", "'"+newDoctor.getName()+"','"+newDoctor.getPhone()
         		+"','"+newDoctor.getAddress()+"','"+newDoctor.getPassword()+"','"+newDoctor.getPID()+"','"+newDoctor.getHospital()
-        		+"','"+imgFront+"','"+"image/buyer.jpg"+"','"+imgReverse+"'");
+        		+"','"+imgFront+"','"+"image/buyer.jpg"+"','"+imgReverse+"','"+newDoctor.getTag()+"'");
         if(isSuccessful){
 			String result = gson.toJson(true);
 			System.out.println("医生注册成功！");

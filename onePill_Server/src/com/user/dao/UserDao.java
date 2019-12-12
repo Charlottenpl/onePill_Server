@@ -114,6 +114,7 @@ public class UserDao {
 				doctor.setLicence1(rs.getString(8));
 				doctor.setHeadImg(rs.getString(9));
 				doctor.setLicence2(rs.getString(10));
+				doctor.setTag(rs.getString(11));
 				return doctor;
 			}
 		}catch(Exception e){
