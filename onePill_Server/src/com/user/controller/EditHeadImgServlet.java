@@ -69,9 +69,11 @@ public class EditHeadImgServlet extends HttpServlet {
 					imgLocation = "image/"+name;
 					ServletContext context = getServletContext();
 					context.setAttribute("imageFront", imgLocation);
-					if (request.getParameter("Code") == "Doctor"){//医生
+					System.out.println(""+request.getParameter("Code"));
+					if (request.getParameter("Code").equals("Doctor")){//医生
 						DoctorDao dao = new DoctorDao();
 						int DoctorId = Integer.valueOf(request.getParameter("DoctorId"));
+						System.out.println("DoctorId\n"+request.getParameter("DoctorId"));
 						dao.editDoctorHeadimg(DoctorId, imgLocation);
                     }else if(request.getParameter("Code") == "Patient"){//用户
                     	UserDao dao = new UserDao();
