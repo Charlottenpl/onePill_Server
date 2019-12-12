@@ -1,4 +1,11 @@
-
-onePill_Server/.classpath
-onePill_Server/.classpath
-onePill_Server/.settings/org.eclipse.wst.common.project.facet.core.xml
+/target/
+*.class
+*.jar
+*.log
+/logs/*
+/target/*
+.gitignore
+.classpath
+.settings*
+.project
+/.idea/*
