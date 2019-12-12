@@ -36,7 +36,6 @@ public class GetUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 				request.setCharacterEncoding("UTF-8");
 				response.setCharacterEncoding("utf-8");
 				System.out.println("查询服务器:");
