@@ -10,8 +10,9 @@ public class Doctor {
 	private String hospital;
 	private String tag;
 	private String headImg;
-	private static String licence1;
-	private static String licence2;
+	private String licence1;
+	private String licence2;
+	private String resume;
 	
 	
 	
@@ -32,6 +33,13 @@ public class Doctor {
 		this.licence2 = licence2;
 	}
 	
+	
+	public String getResume() {
+		return resume;
+	}
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
 	public String getTag() {
         return tag;
     }
