@@ -262,7 +262,7 @@ public class UserDao {
 	public Doctor searchDoctorById(int DoctorId) throws SQLException{
 			Doctor d = null;
 			String sql = "select * from tbl_doctor where Id = "+DoctorId;
-			System.out.println("查询语句"+sql);
+			System.out.println(""+sql);
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
 			connection = DbUtil.getCon();
@@ -270,25 +270,22 @@ public class UserDao {
 			connection.setAutoCommit(false);
 			pstm = connection.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
-			
-			int doctorId = rs.getInt("id");
-			String name = rs.getString("name");
-			String phone = rs.getString("phone");
-			String address = rs.getString("address");
-			String password = rs.getString("password");
-			String postalCode = rs.getString("postalCode");
-			String PID = rs.getString("PID");
-			String hospital = rs.getString("hospital");
-			String headImg = rs.getString("headImg");
-			String tag = rs.getString("tag");
-			String resume = rs.getString("resume");
-			String licence1 = rs.getString("licence1");
-			String licence2 = rs.getString("licence2");
-			d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2);
-			
-			return d;
-			
+			if(rs.next()){
+				int doctorId = rs.getInt("id");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String address = rs.getString("address");
+				String password = rs.getString("password");
+				String PID = rs.getString("PID");
+				String hospital = rs.getString("hospital");
+				String headImg = rs.getString("headImg");
+				String tag = rs.getString("tag");
+				String resume = rs.getString("resume");
+				String licence1 = rs.getString("licence1");
+				String licence2 = rs.getString("licence2");
+				d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2);
+			}
+			return d;		
 	}
-	
 	
 }
