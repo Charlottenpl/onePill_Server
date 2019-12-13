@@ -32,7 +32,20 @@ public class Doctor {
 		this.licence1 = licence1;
 		this.licence2 = licence2;
 	}
-	
+	public Doctor(int id,String name, String phone, String address, String password, String pID, String hospital,
+			String headImg, String licence1, String licence2) {
+		super();
+		this.doctorId = id;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+		this.password = password;
+		PID = pID;
+		this.hospital = hospital;
+		this.headImg = headImg;
+		this.licence1 = licence1;
+		this.licence2 = licence2;
+	}
 	
 	public String getResume() {
 		return resume;

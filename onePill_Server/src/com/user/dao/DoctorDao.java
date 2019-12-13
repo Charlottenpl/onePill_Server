@@ -118,7 +118,8 @@ public class DoctorDao {
 		int i = 0;
 		Connection connection = null;
 		PreparedStatement pstmPreparedStatement = null;
-		String sqlString = "update tbl_doctor set headimg = '"+headimg+"' where id = "+DoctorId;
+		String sqlString = "update tbl_doctor set headImg = '"+headimg+"' where id = "+DoctorId;
+		System.out.print("sql"+sqlString);
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
