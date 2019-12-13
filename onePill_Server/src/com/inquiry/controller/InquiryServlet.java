@@ -60,7 +60,8 @@ public class InquiryServlet extends HttpServlet {
         String location = (String) getServletContext().getAttribute("img");
         try {
 			Boolean isSuccessful = new inquiryDao().add("user_id,title,content,flag,img,time",
-					"'"+inquiry.getUserId()+"','"+inquiry.getTitle()+"','"+inquiry.getContent()+"',"+1+",'"+location+"','"+inquiry.getTime()+"'");
+					"'"+inquiry.getUserId()+"','"+inquiry.getTitle()+"','"+inquiry.getContent()+"','"+inquiry.getFlag()+"','"+
+			location+"','"+inquiry.getTime()+"'");
 			response.getWriter().append("成功");
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -242,6 +242,7 @@ public class UserDao {
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		System.out.println(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
 		connection.commit();
