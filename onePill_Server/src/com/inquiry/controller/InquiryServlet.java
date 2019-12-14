@@ -1,9 +1,11 @@
-package com.article.controller;
+package com.inquiry.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,23 +13,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.article.service.ArticleService;
-import com.entity.Comment;
-import com.entity.Doctor;
+import com.entity.Inquiry;
 import com.google.gson.Gson;
+import com.inquiry.dao.inquiryDao;
 
 /**
- * Servlet implementation class CommentUpdateServlet
+ * Servlet implementation class InquiryServlet
  */
-@WebServlet("/CommentInsertServlet")
-public class CommentInsertServlet extends HttpServlet {
+@WebServlet("/InquiryServlet")
+public class InquiryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private inquiryDao Dao = new inquiryDao();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentInsertServlet() {
+    public InquiryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,6 +46,7 @@ public class CommentInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
 		InputStream is = request.getInputStream();
 		BufferedReader reader=new BufferedReader(new InputStreamReader(is,"utf-8"));
         StringBuffer stringBuffer=new StringBuffer();
@@ -53,17 +55,16 @@ public class CommentInsertServlet extends HttpServlet {
             stringBuffer.append(str);
         }
         Gson gson=new Gson();
-        Comment comment = gson.fromJson(stringBuffer.toString(),Comment.class);
-        Boolean isSuccessful = new ArticleService().CommentInsertService("name,ccomment,headImg,articleId", "'"+comment.getName()+
-        		"','"+comment.getCcomment()+"','"+comment.getHeadImg()+"','"+comment.getArticleId()+"'");
-        if(isSuccessful){
-			String result = gson.toJson(true);
-			response.getWriter().append(result);
-			
-		}else{
-			String result = gson.toJson(false);
-			response.getWriter().append(result);
+        Inquiry inquiry = gson.fromJson(stringBuffer.toString(),Inquiry.class); 
+        System.out.println(inquiry.getUserId());
+        String location = (String) getServletContext().getAttribute("img");
+        try {
+			Boolean isSuccessful = new inquiryDao().add("user_id,title,content,flag,img,time,headImg,name",
+					"'"+inquiry.getUserId()+"','"+inquiry.getTitle()+"','"+inquiry.getContent()+"','"+inquiry.getFlag()+"','"+
+			location+"','"+inquiry.getTime()+"','"+inquiry.getHeadImg()+"','"+inquiry.getName()+"'");
+			response.getWriter().append("成功");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
-
 }

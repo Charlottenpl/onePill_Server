@@ -32,6 +32,31 @@ public class DoctorDao {
 		return f;
 		
 	}
+	/**
+	 * 更改用户resume
+	 * @throws SQLException 
+	 */
+	public boolean editDoctorResume(int DoctorId,String resume) throws SQLException {
+		boolean f = false;//操作结果
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement pstmPreparedStatement = null;
+		String sqlString = "update tbl_doctor set resume='"+resume+"' where id = "+DoctorId+";";
+		System.out.println(sqlString);
+		connection = DbUtil.getCon();
+		connection.setAutoCommit(false);
+		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		i = pstmPreparedStatement.executeUpdate();
+		pstmPreparedStatement.close();
+		connection.commit();
+		if(i!=0)
+			f = true;
+		else
+			f = false;
+		
+		return f;
+		
+	}
 	
 	
 	/**
@@ -118,7 +143,8 @@ public class DoctorDao {
 		int i = 0;
 		Connection connection = null;
 		PreparedStatement pstmPreparedStatement = null;
-		String sqlString = "update tbl_doctor set headimg = '"+headimg+"' where id = "+DoctorId;
+		String sqlString = "update tbl_doctor set headImg = '"+headimg+"' where id = "+DoctorId;
+		System.out.print("sql"+sqlString);
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);

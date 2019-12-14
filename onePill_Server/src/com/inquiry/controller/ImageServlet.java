@@ -1,4 +1,4 @@
-package com.user.controller;
+package com.inquiry.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,20 +17,18 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.user.dao.DoctorDao;
-import com.user.dao.UserDao;
-
 /**
- * Servlet implementation class EditHeadImgServlet
+ * Servlet implementation class ImageServlet
  */
-@WebServlet("/EditHeadImgServlet")
-public class EditHeadImgServlet extends HttpServlet {
+@WebServlet("/ImageServlet")
+public class ImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public EditHeadImgServlet() {
+    public ImageServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -38,12 +36,10 @@ public class EditHeadImgServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		// Create a factory for disk-based file items
 		FileItemFactory factory = new DiskFileItemFactory();
-		String imgLocation = null;
 		// Create a new file upload handler
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
@@ -66,20 +62,9 @@ public class EditHeadImgServlet extends HttpServlet {
 					File realPath = new File(file,name);//图片的实际路径
 					fi.write(realPath);
 					System.out.println(realPath.toString());
-					imgLocation = "image/"+name;
+					String imgPath = "image/"+name;
 					ServletContext context = getServletContext();
-					context.setAttribute("imageFront", imgLocation);
-					System.out.println(""+request.getParameter("Code"));
-					if (request.getParameter("Code").equals("Doctor")){//医生
-						DoctorDao dao = new DoctorDao();
-						int DoctorId = Integer.valueOf(request.getParameter("DoctorId"));
-						System.out.println("DoctorId\n"+request.getParameter("DoctorId"));
-						dao.editDoctorHeadimg(DoctorId, imgLocation);
-                    }else if(request.getParameter("Code").equals("Patient")){//用户
-                    	UserDao dao = new UserDao();
-    					int UserId = Integer.valueOf(request.getParameter("UserId"));
-    					dao.editUserHeadimg(UserId, imgLocation);
-                    }
+					context.setAttribute("img", imgPath);
 				}
 			}
 		} catch (FileUploadException e) {
@@ -90,8 +75,7 @@ public class EditHeadImgServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		// 返回响应
-		response.getWriter().append(imgLocation);
-		System.out.println("返回头像地址“"+imgLocation);
+		response.getWriter().append("上传成功");
 	}
 
 	/**

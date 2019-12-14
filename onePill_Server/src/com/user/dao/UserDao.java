@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.entity.Address;
 import com.entity.Doctor;
+import com.entity.Inquiry;
 import com.entity.User;
 import com.user.controller.EditUserServlet;
 import com.util.DbUtil;
@@ -241,6 +243,7 @@ public class UserDao {
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		System.out.println(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
 		connection.commit();
@@ -253,5 +256,71 @@ public class UserDao {
 		
 	}
 	
+	/**
+	 * 通过DoctorId查询医生
+	 * @throws SQLException 
+	 */
 	
+	public Doctor searchDoctorById(int DoctorId) throws SQLException{
+			Doctor d = null;
+			String sql = "select * from tbl_doctor where Id = "+DoctorId;
+			System.out.println(""+sql);
+			java.sql.Connection connection = null;
+			PreparedStatement pstm = null;
+			connection = DbUtil.getCon();
+			//取消自动提交
+			connection.setAutoCommit(false);
+			pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			if(rs.next()){
+				int doctorId = rs.getInt("id");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String address = rs.getString("address");
+				String password = rs.getString("password");
+				String PID = rs.getString("PID");
+				String hospital = rs.getString("hospital");
+				String headImg = rs.getString("headImg");
+				String tag = rs.getString("tag");
+				String resume = rs.getString("resume");
+				String licence1 = rs.getString("licence1");
+				String licence2 = rs.getString("licence2");
+				d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2);
+			}
+			return d;		
+	}
+	
+	public User searchByUserId(int userId){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			con = DbUtil.getCon();
+			String sql = String.format("select * from tbl_user where id=(%s)",userId);
+			// 取消自动提交
+			con.setAutoCommit(false);
+			pstm = con.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setUserId(userId);
+				user.setNickName(rs.getString(2));
+				user.setAddress(rs.getString(7));
+				user.setPhone(rs.getString(3));
+				user.setPassword(rs.getString(4));
+				user.setPID(rs.getString(5));
+				user.setHeadImg(rs.getString(6));
+			}
+			pstm.close();
+			con.commit();
+			rs.close();
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.close(con);
+		}
+		return null;
+	}
 }
