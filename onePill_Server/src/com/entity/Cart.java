@@ -7,11 +7,6 @@ public class Cart {
 	private int price;
 	private String medicineName;
 	private String medicineSize;
-//	public static final int SELECT_ALL = -1;			// 查询全部的状态位
-//	public static final int TYPE_UNPAY = 0;         // 订单状态为 0 未付款
-//    public static final int TYPE_UNSEND = 1;    // 订单状态为 1 未发货
-//    public static final int TYPE_WAITGET = 2;     // 订单状态为 2 已发货
-//    public static final int TYPE_FINISH = 3;        // 订单状态为 3 已完成
 	public int getUserid() {
 		return userid;
 	}

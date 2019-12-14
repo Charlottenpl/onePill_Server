@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.entity.Address;
 import com.entity.Doctor;
+import com.entity.Inquiry;
 import com.entity.User;
 import com.user.controller.EditUserServlet;
 import com.util.DbUtil;
@@ -242,6 +243,7 @@ public class UserDao {
 		connection = DbUtil.getCon();
 		connection.setAutoCommit(false);
 		pstmPreparedStatement = connection.prepareStatement(sqlString);
+		System.out.println(sqlString);
 		i = pstmPreparedStatement.executeUpdate();
 		pstmPreparedStatement.close();
 		connection.commit();
@@ -288,4 +290,37 @@ public class UserDao {
 			return d;		
 	}
 	
+	public User searchByUserId(int userId){
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			con = DbUtil.getCon();
+			String sql = String.format("select * from tbl_user where id=(%s)",userId);
+			// 取消自动提交
+			con.setAutoCommit(false);
+			pstm = con.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setUserId(userId);
+				user.setNickName(rs.getString(2));
+				user.setAddress(rs.getString(7));
+				user.setPhone(rs.getString(3));
+				user.setPassword(rs.getString(4));
+				user.setPID(rs.getString(5));
+				user.setHeadImg(rs.getString(6));
+			}
+			pstm.close();
+			con.commit();
+			rs.close();
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.close(con);
+		}
+		return null;
+	}
 }

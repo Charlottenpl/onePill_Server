@@ -75,7 +75,7 @@ public class EditHeadImgServlet extends HttpServlet {
 						int DoctorId = Integer.valueOf(request.getParameter("DoctorId"));
 						System.out.println("DoctorId\n"+request.getParameter("DoctorId"));
 						dao.editDoctorHeadimg(DoctorId, imgLocation);
-                    }else if(request.getParameter("Code") == "Patient"){//用户
+                    }else if(request.getParameter("Code").equals("Patient")){//用户
                     	UserDao dao = new UserDao();
     					int UserId = Integer.valueOf(request.getParameter("UserId"));
     					dao.editUserHeadimg(UserId, imgLocation);

@@ -9,17 +9,35 @@ public class Inquiry {
     private String img;
     private String time;
     private int flag;
+    private String headImg;
+    private String name;
 
     public Inquiry(){}
     
     public Inquiry(int userId, String title, String content, String doctor_id, String flag, String img, String time) {
-        userId = userId;
+        this.userId = userId;
         this.title = title;
         this.content = content;
         this.img = img;
         this.time = time;
     }
 
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public int getId() {
         return id;
     }
@@ -61,7 +79,7 @@ public class Inquiry {
     }
 
     public void setUserId(int userId) {
-        userId = userId;
+        this.userId = userId;
     }
 
     public void setTitle(String title) {
