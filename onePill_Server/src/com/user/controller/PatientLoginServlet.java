@@ -50,7 +50,7 @@ public class PatientLoginServlet extends HttpServlet {
 			result.setCode(2);
 			result.setUser(user);
 			String str2 = gson.toJson(result);
-			System.out.println("病人登录失败,电话错误！");
+			System.out.println("病人登录失败,手机号错误！");
 			response.getWriter().append(str2);
 		}else if(!user.getPassword().equals(password)){
 			result.setCode(3);
