@@ -17,7 +17,7 @@ public class User {
 		this.nickName = nickName;
 		this.phone = phone;
 		this.password = password;
-		PID = pID;
+		this.PID = pID;
 		this.headImg = headImg;
 		this.address = address;
 	}
@@ -50,7 +50,7 @@ public class User {
 		return PID;
 	}
 	public void setPID(String pID) {
-		PID = pID;
+		this.PID = pID;
 	}
 	public String getHeadImg() {
 		return headImg;

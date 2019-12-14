@@ -17,6 +17,9 @@ public class UserService {
 	public Doctor DoctorLoginService(String phone,String password){
 		return new UserDao().doctorLogin(phone, password);
 	}
+//	public User searchByUserId(int userId){
+//		return new UserDao().searchByUserId(userId);
+//	}
 }
 
 

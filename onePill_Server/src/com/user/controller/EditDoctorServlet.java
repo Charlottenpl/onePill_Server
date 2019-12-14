@@ -39,7 +39,7 @@ public class EditDoctorServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		System.out.print("医生信息服务器");
 		String code = request.getParameter("Code");
-		int DoctorId = Integer.valueOf(request.getParameter("DoctorId"));//request:Code+UserId+要更改的部分,response:返回yes或no
+		int DoctorId = Integer.valueOf(request.getParameter("doctorId"));//request:Code+UserId+要更改的部分,response:返回yes或no
 		
 		System.out.println("Code"+code+"UserId"+DoctorId);
 		switch (code) {
