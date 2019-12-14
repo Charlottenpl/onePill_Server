@@ -60,6 +60,23 @@ public class EditDoctorServlet extends HttpServlet {
 				response.getWriter().append("no");
 			}
 			break;
+		case "resume":
+			//更新resume
+			String resume = request.getParameter("resume");
+			//存入数据库
+			try {
+				f = dao.editDoctorResume(DoctorId, resume);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (f) {
+				response.getWriter().append("yes");
+			}else {
+				response.getWriter().append("no");
+			}
+			break;
 		case "phone":
 			//更新手机号
 			String phone = request.getParameter("phone");
