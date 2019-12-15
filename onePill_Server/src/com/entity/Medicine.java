@@ -7,25 +7,29 @@ public class Medicine {
 	private String price;
 	private String overview;
 	private String function;
-	private String introduction;
+	private String introdutions;
 	private String side_effect;
 	private String forbiddance;
 	private int doctor_id;
-	private String img;
+	private String img1;
+	private String img2;
+	private String img3;
 	private String standard;
 	
-	public Medicine(int id, String generalName, String medicine, String price, String overview, String function, String introduction, String side_effect, String forbiddance, int doctor_id, String img, String standard) {
+	public Medicine(int id, String generalName, String medicine, String price, String overview, String function, String introdutions, String side_effect, String forbiddance, int doctor_id, String img1,String img2,String img3, String standard) {
         this.id = id;
         this.generalName = generalName;
         this.medicine = medicine;
         this.price = price;
         this.overview = overview;
         this.function = function;
-        this.introduction = introduction;
+        this.introdutions = introdutions;
         this.side_effect = side_effect;
         this.forbiddance = forbiddance;
         this.doctor_id = doctor_id;
-        this.img = img;
+        this.img1 = img1;
+        this.img2 = img2;
+        this.img3 = img3;
         this.standard = standard;
     }
 	public int getId() {
@@ -64,11 +68,11 @@ public class Medicine {
 	public void setFunction(String function) {
 		this.function = function;
 	}
-	public String getIntroduction() {
-		return introduction;
+	public String getIntrodutions() {
+		return introdutions;
 	}
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
+	public void setIntrodutions(String introdutions) {
+		this.introdutions = introdutions;
 	}
 	public String getSide_effect() {
 		return side_effect;
@@ -88,11 +92,23 @@ public class Medicine {
 	public void setDoctor_id(int doctor_id) {
 		this.doctor_id = doctor_id;
 	}
-	public String getImg() {
-		return img;
+	public String getImg1() {
+		return img1;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setImg1(String img1) {
+		this.img1 = img1;
+	}
+	public String getImg2() {
+		return img2;
+	}
+	public void setImg(String img2) {
+		this.img2 = img2;
+	}
+	public String getImg3() {
+		return img3;
+	}
+	public void setImg3(String img3) {
+		this.img3 = img3;
 	}
 	public String getStandard() {
 		return standard;

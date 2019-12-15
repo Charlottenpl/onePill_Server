@@ -17,7 +17,8 @@ public class MedicineDao {
 	
 	public Medicine searchMedicineByName(String name) throws SQLException {
 		Medicine d = null;
-		String sql = "select * from tbl_medicine where medicine = "+name;
+		String sql = "select * from tbl_medicine where medicine = '"+name+"'";
+		
 		System.out.println(""+sql);
 		java.sql.Connection connection = null;
 		PreparedStatement pstm = null;
@@ -33,13 +34,15 @@ public class MedicineDao {
 			String price = rs.getString("price");
 			String overview = rs.getString("overview");
 			String function = rs.getString("function");
-			String introduction = rs.getString("introduction");
+			String introdutions = rs.getString("introdutions");
 			String side_effect = rs.getString("side_effect");
 			String forbiddance = rs.getString("forbiddance");
 			int doctor_id = rs.getInt("doctor_id");
-			String img = rs.getString("img");
+			String img1 = rs.getString("img1");
+			String img2 = rs.getString("img2");
+			String img3 = rs.getString("img3");
 			String standard = rs.getString("standard");
-			d = new Medicine(id,generalName,medicine,price,overview,function,introduction,side_effect,forbiddance,doctor_id,img,standard);
+			d = new Medicine(id,generalName,medicine,price,overview,function,introdutions,side_effect,forbiddance,doctor_id,img1,img2,img3,standard);
 		}
 		return d;		
 	}

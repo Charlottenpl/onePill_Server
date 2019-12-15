@@ -43,8 +43,9 @@ public class MedicineServlet extends HttpServlet {
 				
 				System.out.println("Code"+code);
 				switch (code) {
-				case "searchMedicineBuName":
+				case "searchMedicineByName":
 					Medicine medicine = null;
+					System.out.println("进入这里查找药品");
 					String name = request.getParameter("name");
 					
 					try {
@@ -54,6 +55,7 @@ public class MedicineServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 					String json = gson.toJson(medicine);
+					System.out.println(json.toString());
 					response.getWriter().append(json);
 					break;
 				default:

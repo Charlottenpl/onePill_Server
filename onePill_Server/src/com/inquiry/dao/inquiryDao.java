@@ -88,6 +88,7 @@ public class inquiryDao {
 				inquiry.setTime(rs.getString(7));
 				inquiry.setHeadImg(rs.getString(8));
 				inquiry.setName(rs.getString(9));
+				inquiry.setPhone(rs.getString(10));
 				list.add(inquiry);
 			}
 			pstm.close();
