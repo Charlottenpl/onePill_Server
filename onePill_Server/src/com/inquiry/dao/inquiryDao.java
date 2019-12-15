@@ -86,6 +86,8 @@ public class inquiryDao {
 				inquiry.setFlag(rs.getInt(5));
 				inquiry.setImg(rs.getString(6));
 				inquiry.setTime(rs.getString(7));
+				inquiry.setHeadImg(rs.getString(8));
+				inquiry.setName(rs.getString(9));
 				list.add(inquiry);
 			}
 			pstm.close();

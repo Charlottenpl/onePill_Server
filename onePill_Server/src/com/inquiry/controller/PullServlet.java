@@ -38,6 +38,7 @@ public class PullServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		List<Inquiry> inquiryList = new inquiryDao().findAllInquiry();
+		System.out.println(inquiryList.get(0).getHeadImg());
 		response.getWriter().append(new Gson().toJson(inquiryList));
 	}
 

@@ -285,7 +285,7 @@ public class UserDao {
 				String resume = rs.getString("resume");
 				String licence1 = rs.getString("licence1");
 				String licence2 = rs.getString("licence2");
-				d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2);
+				d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2,resume);
 			}
 			return d;		
 	}

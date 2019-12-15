@@ -33,7 +33,7 @@ public class Doctor {
 		this.licence2 = licence2;
 	}
 	public Doctor(int id,String name, String phone, String address, String password, String pID, String hospital,
-			String headImg, String licence1, String licence2) {
+			String headImg, String licence1, String licence2,String resume) {
 		super();
 		this.doctorId = id;
 		this.name = name;
@@ -45,6 +45,7 @@ public class Doctor {
 		this.headImg = headImg;
 		this.licence1 = licence1;
 		this.licence2 = licence2;
+		this.resume = resume;
 	}
 	
 	public String getResume() {
