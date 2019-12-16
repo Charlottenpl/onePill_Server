@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.entity.Address;
+import com.entity.Medicine;
 import com.entity.Order;
 import com.form.service.OrderService;
 
@@ -77,20 +78,33 @@ public class OrderPaShowServlet extends HttpServlet {
 		JSONArray jsonArray = new JSONArray();
 		for(Order order : orders){
 			// 获取这个 order对应的地址,以及对应的蛋糕
-//			Cake cake = OrderService.findCakeById(order.getCakeId());
+			Medicine medicine = orderService.findMedicineById(order.getMedicineId());
 			Address address = orderService.findOrderAddress(order.getAddressId());
 			// 封装数据并发送
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("id", order.getId());
-
-					
-//			jsonObject.put("cakeName", cake.getName());
-//			jsonObject.put("cakeSize", cake.getSize());
-//			jsonObject.put("cakeDescription", cake.getDescription());
-//			jsonObject.put("cakePrice", cake.getPrice());
-//			jsonObject.put("cakeStock", cake.getStock());
-					
+			jsonObject.put("medicineId", order.getMedicineId());
+			jsonObject.put("count", order.getCount());
+			jsonObject.put("type", order.getType());
+			jsonObject.put("addressId", order.getAddressId());
+			
+			jsonObject.put("medicineName",medicine.getMedicine());
+			jsonObject.put("medicineSize", medicine.getStandard());
+			jsonObject.put("medicineGeneraName", medicine.getGeneralName());
+			jsonObject.put("medicinePrice", medicine.getPrice());
+			jsonObject.put("medicineForbiddance", medicine.getForbiddance());
+			jsonObject.put("medicineIntrodutions", medicine.getIntrodutions());
+			jsonObject.put("medicineStock",medicine.getStock());
+			jsonObject.put("medicineFunction",medicine.getFunction());
+			jsonObject.put("medicineOverView", medicine.getOverview());
+			jsonObject.put("medicineSideEffect", medicine.getSideEffect());
+			
+			jsonObject.put("addressId", address.getId());
 			jsonObject.put("addressName",address.getName());
+			jsonObject.put("addressPhone", address.getPhoneNumber());
+			jsonObject.put("addressMore", address.getMore());
+			jsonObject.put("addressDetail", address.getAddress());
+			jsonObject.put("addressCode", address.getPostalCode());
 					
 			jsonArray.put(jsonObject);
 		}

@@ -1,23 +1,40 @@
 package com.entity;
 
 public class Cart {
-	private int userid;
-	private int medicineid;
+	private int id;
+	private int userId;
+	private int medicineId;
 	private int count;
 	private int price;
 	private String medicineName;
 	private String medicineSize;
-	public int getUserid() {
-		return userid;
+	private int status;
+	
+	
+	public int getStatus() {
+		return status;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setStatus(int status) {
+		this.status = status;
 	}
-	public int getMedicineid() {
-		return medicineid;
+	public int getId() {
+		return id;
 	}
-	public void setMedicineid(int medicineid) {
-		this.medicineid = medicineid;
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getMedicineId() {
+		return medicineId;
+	}
+	public void setMedicineId(int medicineId) {
+		this.medicineId = medicineId;
 	}
 	public int getCount() {
 		return count;

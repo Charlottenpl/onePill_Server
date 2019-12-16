@@ -9,6 +9,7 @@ public class Address {
     private String address;
     private String more;
     private String postalCode;
+    private boolean type;
 
     public Address(int UserId,String name,String phoneNumber,String address,String more,String postalCode){
         this.UserId = UserId;
