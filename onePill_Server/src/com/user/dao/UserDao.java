@@ -290,6 +290,40 @@ public class UserDao {
 			return d;		
 	}
 	
+	/**
+	 * 通过DoctorName查询医生
+	 * @throws SQLException 
+	 */
+	
+	public Doctor searchDoctorByName(String Name) throws SQLException{
+			Doctor d = null;
+			String sql = "select * from tbl_doctor where name = '"+Name+"'";
+			System.out.println(""+sql);
+			java.sql.Connection connection = null;
+			PreparedStatement pstm = null;
+			connection = DbUtil.getCon();
+			//取消自动提交
+			connection.setAutoCommit(false);
+			pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			if(rs.next()){
+				int doctorId = rs.getInt("id");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String address = rs.getString("address");
+				String password = rs.getString("password");
+				String PID = rs.getString("PID");
+				String hospital = rs.getString("hospital");
+				String headImg = rs.getString("headImg");
+				String tag = rs.getString("tag");
+				String resume = rs.getString("resume");
+				String licence1 = rs.getString("licence1");
+				String licence2 = rs.getString("licence2");
+				d = new Doctor(doctorId, name, phone, address, password, PID,hospital,headImg,licence1,licence2,resume);
+			}
+			return d;		
+	}
+	
 	public User searchByUserId(int userId){
 		Connection con = null;
 		PreparedStatement pstm = null;
