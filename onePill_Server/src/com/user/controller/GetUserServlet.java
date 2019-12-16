@@ -58,8 +58,13 @@ public class GetUserServlet extends HttpServlet {
 					
 					break;
 				case "searchDoctorByName":
-					String name = request.getParmeter("name");
-					doctor = userdao.searchDoctorByName(name);
+					String name = request.getParameter("name");
+					try {
+						doctor = userdao.searchDoctorByName(name);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					String json2 = null;
 					json2 = gson.toJson(doctor);
 					System.out.println(json2);
