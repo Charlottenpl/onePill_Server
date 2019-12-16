@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.entity.Address;
 import com.entity.Doctor;
 import com.google.gson.Gson;
+import com.user.dao.DoctorDao;
 import com.user.dao.UserDao;
 
 /**
@@ -55,6 +56,14 @@ public class GetUserServlet extends HttpServlet {
 					System.out.println(""+json);
 				response.getWriter().append(json);
 					
+					break;
+				case "searchDoctorByName":
+					String name = request.getParmeter("name");
+					doctor = userdao.searchDoctorByName(name);
+					String json2 = null;
+					json2 = gson.toJson(doctor);
+					System.out.println(json2);
+					response.getWriter().append(json2);
 					break;
 				default:
 					break;
