@@ -62,7 +62,6 @@ public class GetUserServlet extends HttpServlet {
 					try {
 						doctor = userdao.searchDoctorByName(name);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					String json2 = null;
