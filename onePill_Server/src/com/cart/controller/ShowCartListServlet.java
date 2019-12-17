@@ -68,6 +68,7 @@ public class ShowCartListServlet extends HttpServlet {
 			object.put("sideeffect", medicine.getSideEffect());
 			object.put("size", medicine.getStandard());
 			object.put("stock", medicine.getStock());
+			object.put("img1", medicine.getImg1());
 			jsonArray.put(object);
 		}
 		// 3. 将搜索到的cartlist发送给客户端

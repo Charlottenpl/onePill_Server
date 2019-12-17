@@ -28,7 +28,8 @@ public class focusDao {
 	 */
 		public List<Doctor> searchAllDoctor(int UserId,int UserType) throws SQLException{
 			List<Doctor> doctorList = new ArrayList<Doctor>();
-			String sql = "select typeId from tbl_focus where userId = "+UserId+"and userType="+UserType+"&&type=1";
+			String sql = "select typeId from tbl_focus where userId = "+UserId+" and userType="+UserType+" and type=1";
+			System.out.println("sql语句"+sql);
 			UserDao userDao = new UserDao();
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
@@ -56,7 +57,7 @@ public class focusDao {
 		 */
 		public List<Medicine> searchAllMedicine(int UserId,int UserType) throws SQLException{
 			List<Medicine> medicineList = new ArrayList<Medicine>();
-			String sql = "select typeId from tbl_focus where userId = "+UserId+"and userType="+UserType+"&&type=2";
+			String sql = "select typeId from tbl_focus where userId = "+UserId+" and userType="+UserType+" and type=2";
 			MedicineDao medicineDao = new MedicineDao();
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
@@ -68,6 +69,7 @@ public class focusDao {
 			while (rs.next()) {
 				int id = rs.getInt("typeId");
 				medicineList.add(medicineDao.searchMedicineById(id));
+				System.out.println(id+"123!!!!!!");
 			}
 			pstm.close();
 			connection.commit();
@@ -84,7 +86,7 @@ public class focusDao {
 		public boolean del(int userId,int userType,int type,int typeId) throws SQLException {
 			
 			Boolean f = false;//操作结果
-			int i = 0;
+			Boolean i = false;
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
 			
@@ -93,10 +95,10 @@ public class focusDao {
 			//取消自动提交
 			connection.setAutoCommit(false);
 			pstm = connection.prepareStatement(sql);
-			i = pstm.executeUpdate();
+			i = pstm.execute();
 			pstm.close();
 			connection.commit();
-			if(i!=0)
+			if(i)
 				f = true;
 			else
 				f = false;
@@ -120,7 +122,7 @@ public class focusDao {
 					+f.getTypeId()+"'";
 			
 			Boolean fus = false;//操作结果
-			int i = 0;
+			Boolean i = false;
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
 			
@@ -130,10 +132,10 @@ public class focusDao {
 			//取消自动提交
 			connection.setAutoCommit(false);
 			pstm = connection.prepareStatement(sql);
-			i = pstm.executeUpdate();
+			i = pstm.execute();
 			pstm.close();
 			connection.commit();
-			if(i!=0)
+			if(i)
 				fus = true;
 			else
 				fus = false;
@@ -147,7 +149,7 @@ public class focusDao {
 public boolean isHave(int userId,int userType,int type,int typeId) throws SQLException {
 			
 			Boolean fus = false;//操作结果
-			int i = 0;
+			Boolean i = false;
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
 			
@@ -156,10 +158,10 @@ public boolean isHave(int userId,int userType,int type,int typeId) throws SQLExc
 			//取消自动提交
 			connection.setAutoCommit(false);
 			pstm = connection.prepareStatement(sql);
-			i = pstm.executeUpdate();
+			i = pstm.execute();
 			pstm.close();
 			connection.commit();
-			if(i!=0)
+			if(i)
 				fus = true;
 			else
 				fus = false;
