@@ -49,9 +49,9 @@ public class CartAddServlet extends HttpServlet {
 		// 2. 将读取的内容转化为 JSON格式,在转化成cart对象
 		JSONObject newCart = new JSONObject(accept);
 		Cart cart = new Cart();
-		cart.setUserid(newCart.getInt("userid"));
+		cart.setUserId(newCart.getInt("userid"));
 		cart.setCount(newCart.getInt("count"));
-		cart.setMedicineid(newCart.getInt("medicineid"));
+		cart.setMedicineId(newCart.getInt("medicineid"));
 		cart.setPrice(newCart.getInt("price"));
 		cart.setMedicineName(newCart.getString("medicineName"));
 		cart.setMedicineSize(newCart.getString("medicineSize"));

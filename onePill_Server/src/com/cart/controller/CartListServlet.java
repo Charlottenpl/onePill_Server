@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import com.cart.service.CartService;
+import com.entity.Medicine;
+
 /**
  * Servlet implementation class CartListServlet
  */
-@WebServlet("/CartListServlet")
+@WebServlet("/buyer/cart/item")
 public class CartListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,13 +43,21 @@ public class CartListServlet extends HttpServlet {
 		int len = is.read(temp);
 		String get = new String(temp,0,len);
 		JSONObject object = new JSONObject(get);
-		int cakeId = object.getInt("cakeId");
+		int medicineId = object.getInt("medicineId");
 		// 2. 查询出该 id 对应的Cake信息
-//		Med cake = new BuyerServiceImp().findCakeById(cakeId);
+		Medicine medicine = new CartService().findMedicineById(medicineId);
 		// 3. 将信息发送给客户端
 		OutputStream os = response.getOutputStream();
 		JSONObject send = new JSONObject();
-	
+		send.put("id", medicine.getId());
+		send.put("generaname",medicine.getGeneralName());
+		send.put("medicineName",medicine.getMedicine());
+		send.put("price",medicine.getPrice());
+		send.put("overView",medicine.getOverview());
+		send.put("introdution",medicine.getIntrodutions());
+		send.put("forbiddancet", medicine.getForbiddance());
+		send.put("sideeffect", medicine.getSideEffect());
+		send.put("size", medicine.getStandard());
 		os.write(send.toString().getBytes());
 		
 		os.close();

@@ -38,4 +38,8 @@ public class OrderDao {
 	public static int insertNewOrder(String valuesName,String values){
 		return DbUtil.insertInto(orderTableName, valuesName, values);
 	}
+	//根据MedicineId查询单个药品的信息
+	public static Map<String, Object> findMedicineById(int medicineId) {
+		return DbUtil.findById(medicineTableName, medicineId);
+	}
 }
