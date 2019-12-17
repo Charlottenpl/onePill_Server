@@ -74,7 +74,8 @@ public class MedicineDao {
 			String img2 = rs.getString("img2");
 			String img3 = rs.getString("img3");
 			String standard = rs.getString("standard");
-			d = new Medicine(id,generalName,medicine,price,overview,function,introdutions,side_effect,forbiddance,doctor_id,img1,img2,img3,standard);
+			int stock = rs.getInt("stock");
+			d = new Medicine(id,generalName,medicine,price,overview,function,introdutions,side_effect,forbiddance,doctor_id,img1,img2,img3,standard,stock);
 		}
 		return d;		
 	}
