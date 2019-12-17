@@ -81,7 +81,7 @@ public class focusDao {
 		 * @return
 		 * @throws SQLException
 		 */
-		public boolean del(int Id) throws SQLException {
+		public boolean del(int userId,int userType,int type,int typeId) throws SQLException {
 			
 			Boolean f = false;//操作结果
 			int i = 0;
@@ -89,7 +89,7 @@ public class focusDao {
 			PreparedStatement pstm = null;
 			
 			connection = DbUtil.getCon();
-			String sql = "delete from tbl_focus where id="+Id;
+			String sql = "delete from tbl_focus where userId="+userId+" and userType="+userType+" and type="+type+" and typeId="+typeId;
 			//取消自动提交
 			connection.setAutoCommit(false);
 			pstm = connection.prepareStatement(sql);

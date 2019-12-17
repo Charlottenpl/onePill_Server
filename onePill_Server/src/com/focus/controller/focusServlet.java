@@ -79,9 +79,9 @@ public class focusServlet extends HttpServlet {
 		case "add":
 			int userId2 = Integer.valueOf(request.getParameter("userId"));
 			int userType2 = Integer.valueOf(request.getParameter("userType"));
-			int type = Integer.valueOf(request.getParameter("type"));
-			int typeId = Integer.valueOf(request.getParameter("typeId"));
-			focus f = new focus( userId2, userType2, type, typeId);
+			int type2 = Integer.valueOf(request.getParameter("type"));
+			int typeId2 = Integer.valueOf(request.getParameter("typeId"));
+			focus f = new focus( userId2, userType2, type2, typeId2);
 			try {
 				b = fDao.add(f);
 			} catch (SQLException e) {
@@ -95,9 +95,12 @@ public class focusServlet extends HttpServlet {
 			}
 			break;
 		case "del":
-			int id = Integer.valueOf(request.getParameter("id"));
+			int userId3 = Integer.valueOf(request.getParameter("userId"));
+			int userType3 = Integer.valueOf(request.getParameter("userType"));
+			int type3 = Integer.valueOf(request.getParameter("type"));
+			int typeId3 = Integer.valueOf(request.getParameter("typeId"));
 			try {
-				b = fDao.del(id);
+				b = fDao.del(userId3,userType3,type3,typeId3);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,12 +112,12 @@ public class focusServlet extends HttpServlet {
 			}
 			break;
 		case "isHave":
-			int userId3 = Integer.valueOf(request.getParameter("userId"));
-			int userType3 = Integer.valueOf(request.getParameter("userType"));
-			int type1 = Integer.valueOf(request.getParameter("type"));
-			int typeId1 = Integer.valueOf(request.getParameter("typeId"));
+			int userId4 = Integer.valueOf(request.getParameter("userId"));
+			int userType4 = Integer.valueOf(request.getParameter("userType"));
+			int type4 = Integer.valueOf(request.getParameter("type"));
+			int typeId4 = Integer.valueOf(request.getParameter("typeId"));
 			try {
-				b=fDao.isHave(userId3, userType3, type1, typeId1);
+				b=fDao.isHave(userId4, userType4, type4, typeId4);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
