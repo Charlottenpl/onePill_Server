@@ -124,7 +124,7 @@ public class focusServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(!b) {
+			if(b) {
 				response.getWriter().append("yes");
 			}else {
 				response.getWriter().append("no");

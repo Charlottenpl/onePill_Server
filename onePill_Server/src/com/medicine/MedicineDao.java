@@ -35,9 +35,9 @@ public class MedicineDao {
 			String overview = rs.getString("overview");
 			String function = rs.getString("function");
 			String introdutions = rs.getString("introdutions");
-			String side_effect = rs.getString("side_effect");
+			String side_effect = rs.getString("sideEffect");
 			String forbiddance = rs.getString("forbiddance");
-			int doctor_id = rs.getInt("doctor_id");
+			int doctor_id = rs.getInt("doctorId");
 			String img1 = rs.getString("img1");
 			String img2 = rs.getString("img2");
 			String img3 = rs.getString("img3");
@@ -67,9 +67,9 @@ public class MedicineDao {
 			String overview = rs.getString("overview");
 			String function = rs.getString("function");
 			String introdutions = rs.getString("introdutions");
-			String side_effect = rs.getString("side_effect");
+			String side_effect = rs.getString("sideEffect");
 			String forbiddance = rs.getString("forbiddance");
-			int doctor_id = rs.getInt("doctor_id");
+			int doctor_id = rs.getInt("doctorId");
 			String img1 = rs.getString("img1");
 			String img2 = rs.getString("img2");
 			String img3 = rs.getString("img3");
