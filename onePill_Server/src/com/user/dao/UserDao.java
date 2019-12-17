@@ -339,6 +339,7 @@ public class UserDao {
 			while (rs.next()) {
 				user = new User();
 				user.setUserId(userId);
+				
 				user.setNickName(rs.getString(2));
 				user.setAddress(rs.getString(7));
 				user.setPhone(rs.getString(3));
