@@ -98,6 +98,7 @@ public class OrderPaShowServlet extends HttpServlet {
 			jsonObject.put("medicineFunction",medicine.getFunction());
 			jsonObject.put("medicineOverView", medicine.getOverview());
 			jsonObject.put("medicineSideEffect", medicine.getSideEffect());
+//			jsonObject.put("img1", medicine.getImg1());
 			
 			jsonObject.put("addressId", address.getId());
 			jsonObject.put("addressName",address.getName());

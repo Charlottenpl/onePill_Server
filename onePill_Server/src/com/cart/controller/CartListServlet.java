@@ -58,6 +58,7 @@ public class CartListServlet extends HttpServlet {
 		send.put("forbiddancet", medicine.getForbiddance());
 		send.put("sideeffect", medicine.getSideEffect());
 		send.put("size", medicine.getStandard());
+		send.put("img1", medicine.getImg1());
 		os.write(send.toString().getBytes());
 		
 		os.close();
