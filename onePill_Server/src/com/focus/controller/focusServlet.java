@@ -48,8 +48,10 @@ public class focusServlet extends HttpServlet {
 		List<Medicine> medicineList = new ArrayList<Medicine>();
 		switch (code) {
 		case "searchDoctorList":
+			
 			int userId = Integer.valueOf(request.getParameter("userId"));
 			int userType = Integer.valueOf(request.getParameter("userType"));
+			System.out.println("打印Id"+userId+userType);
 			try {
 				doctorList = fDao.searchAllDoctor(userId,userType);
 			} catch (SQLException e) {

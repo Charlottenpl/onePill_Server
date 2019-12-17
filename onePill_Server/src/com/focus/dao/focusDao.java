@@ -28,7 +28,8 @@ public class focusDao {
 	 */
 		public List<Doctor> searchAllDoctor(int UserId,int UserType) throws SQLException{
 			List<Doctor> doctorList = new ArrayList<Doctor>();
-			String sql = "select typeId from tbl_focus where userId = "+UserId+"and userType="+UserType+"&&type=1";
+			String sql = "select typeId from tbl_focus where userId = "+UserId+" and userType="+UserType+" and type=1";
+			System.out.println("sql语句"+sql);
 			UserDao userDao = new UserDao();
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
@@ -56,7 +57,7 @@ public class focusDao {
 		 */
 		public List<Medicine> searchAllMedicine(int UserId,int UserType) throws SQLException{
 			List<Medicine> medicineList = new ArrayList<Medicine>();
-			String sql = "select typeId from tbl_focus where userId = "+UserId+"and userType="+UserType+"&&type=2";
+			String sql = "select typeId from tbl_focus where userId = "+UserId+" and userType="+UserType+" and type=2";
 			MedicineDao medicineDao = new MedicineDao();
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
@@ -68,6 +69,7 @@ public class focusDao {
 			while (rs.next()) {
 				int id = rs.getInt("typeId");
 				medicineList.add(medicineDao.searchMedicineById(id));
+				System.out.println(id+"123!!!!!!");
 			}
 			pstm.close();
 			connection.commit();
