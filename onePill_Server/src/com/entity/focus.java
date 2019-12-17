@@ -29,6 +29,14 @@ public class focus {
         this.typeId = typeId;
     }
 	
+	public focus(int userId2, int userType2, int type2, int typeId2) {
+		// TODO Auto-generated constructor stub
+		this.userId = userId2;
+		this.userType = userType2;
+		this.type = type2;
+		this.typeId = typeId2;
+	}
+
 	public int getId() {
 		return id;
 	}
