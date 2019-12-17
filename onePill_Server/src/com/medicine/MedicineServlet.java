@@ -47,7 +47,6 @@ public class MedicineServlet extends HttpServlet {
 					Medicine medicine = null;
 					System.out.println("进入这里查找药品");
 					String name = request.getParameter("name");
-					
 					try {
 						medicine = dao.searchMedicineByName(name);
 					} catch (SQLException e) {
