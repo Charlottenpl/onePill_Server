@@ -23,7 +23,7 @@ public class Medicine {
 	public Medicine(){
 		
 	}
-	public Medicine(int id, String generalName, String medicine, String price, String overview, String function, String introdutions, String side_effect, String forbiddance, int doctor_id, String img1,String img2,String img3, String standard,int stock) {
+	public Medicine(int id, String generalName, String medicine, String price, String overview, String function, String introdutions, String side_effect, String forbiddance, int doctorId, String img1,String img2,String img3, String standard,int stock) {
         super();
 		this.id = id;
         this.generalName = generalName;
@@ -34,7 +34,7 @@ public class Medicine {
         this.introdutions = introdutions;
         this.sideEffect = side_effect;
         this.forbiddance = forbiddance;
-        this.doctorId = doctor_id;
+        this.doctorId = doctorId;
         this.img1 = img1;
         this.img2 = img2;
         this.img3 = img3;
