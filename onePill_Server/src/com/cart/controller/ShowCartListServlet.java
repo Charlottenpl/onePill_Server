@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import com.cart.service.CartService;
 import com.entity.Cart;
+import com.entity.Medicine;
 
 /**
  * Servlet implementation class ShowCartListServlet
@@ -53,7 +54,20 @@ public class ShowCartListServlet extends HttpServlet {
 		JSONArray jsonArray = new JSONArray();
 		for(Cart cart:carts){
 			JSONObject object = new JSONObject();
-			
+			Medicine medicine = buyerServiceImp.findMedicineById(cart.getMedicineId());
+			object.put("medicineId", cart.getMedicineId());
+			object.put("count", cart.getCount());
+			object.put("id", cart.getId());
+			object.put("status", cart.getStatus());
+			object.put("generaname",medicine.getGeneralName());
+			object.put("medicineName",medicine.getMedicine());
+			object.put("price",medicine.getPrice());
+			object.put("overView",medicine.getOverview());
+			object.put("introdution",medicine.getIntrodutions());
+			object.put("forbiddancet", medicine.getForbiddance());
+			object.put("sideeffect", medicine.getSideEffect());
+			object.put("size", medicine.getStandard());
+			object.put("stock", medicine.getStock());
 			jsonArray.put(object);
 		}
 		// 3. 将搜索到的cartlist发送给客户端

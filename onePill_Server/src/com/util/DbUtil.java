@@ -193,6 +193,7 @@ public class DbUtil {
 			System.out.println("ִ根据ID查询数据:"+sql);
 			rs = pstm.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
+			System.out.println("ResultSetMetaData"+rsmd);
 			if(rs.next()){
 				int colNum = rsmd.getColumnCount();
 				for (int i = 1; i <= colNum; i++){
@@ -250,6 +251,7 @@ public class DbUtil {
 	 * @return
 	 */
 	public static Map<String , Object> findOneByWhere(String selectWhere,String tableName,String where){
+		System.out.println("表："+tableName+"数据："+selectWhere);
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -290,6 +292,7 @@ public class DbUtil {
 	 * @return
 	 */
 	public static List<Map<String, Object>> findListByWhere(String selectName,String tableName,String where){
+		System.out.println("表："+tableName+"数据："+selectName);
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -321,6 +324,7 @@ public class DbUtil {
 		}
 	}
 	public static <T> List<T> changeIntoObj(Class<T> cls,List<Map<String,Object>> originalList){
+		System.out.println("originalList="+originalList);
 		List<T> changedList = new ArrayList<>();
 		T entity = null;
 		try {

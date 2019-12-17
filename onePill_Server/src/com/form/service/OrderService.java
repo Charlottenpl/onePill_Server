@@ -2,7 +2,9 @@ package com.form.service;
 
 import java.util.List;
 
+import com.cart.dao.CartDao;
 import com.entity.Address;
+import com.entity.Medicine;
 import com.entity.Order;
 import com.form.dao.OrderDao;
 import com.util.DbUtil;
@@ -20,7 +22,7 @@ public class OrderService {
 		public Address findOrderAddress(int addressId){
 			return DbUtil.changeIntoObj(Address.class, OrderDao.findOrderAddress(addressId));
 		}
-		// 修改相应蛋糕的状态位（由未付款-->待发货以及由 待发货-->已收货）
+		// 修改相应药品的状态位（由未付款-->待发货以及由 待发货-->已收货）
 		public int updateOrderType(int orderId,int changeType,int medicineId,int count){
 			String where = "id ="+orderId;
 			String set = "type =";
@@ -45,5 +47,10 @@ public class OrderService {
 			String values = order.getMedicineId()+","+order.getCount()+","+order.getBuyerId()+","+
 					order.getDoctorId()+","+order.getAddressId()+","+order.getType();
 			return OrderDao.insertNewOrder(valuesName, values);
+		}
+		//
+		public Medicine findMedicineById(int medicineId) {
+			// TODO Auto-generated method stub
+			return DbUtil.changeIntoObj(Medicine.class, OrderDao.findMedicineById(medicineId));
 		}
 }

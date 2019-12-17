@@ -5,12 +5,13 @@ import java.util.Map;
 
 import com.cart.dao.CartDao;
 import com.entity.Cart;
+import com.entity.Medicine;
 import com.util.DbUtil;
 
 public class CartService {
 	// 添加商品至购物车
 	public int addIntoCart(Cart cart){
-		String where = "medicineid ="+cart.getMedicineid()+" and userid ="+cart.getUserid();
+		String where = "medicineid ="+cart.getMedicineId()+" and userid ="+cart.getUserId();
 		Map<String, Object> map = CartDao.checkCartIsExist(where);
 		if (map != null) {// 说明购物车中有这个商品
 			// 修改对应购物车的数量即可
@@ -20,10 +21,13 @@ public class CartService {
 			String where2 = "id ="+id;
 			return CartDao.updateCartItemCount(set2, where2);
 		}else{	// 购物车中无此商品，建立新的购物车项
-			return CartDao.addIntoCart(cart.getMedicineid(), cart.getUserid(), cart.getCount());
+			return CartDao.addIntoCart(cart.getMedicineId(), cart.getUserId(), cart.getCount());
 		}
 	}
-	
+	//根据MedicineId查询其所对应的药品信息
+	public Medicine findMedicineById(int medicineId){
+		return DbUtil.changeIntoObj(Medicine.class, CartDao.findMedicineById(medicineId));
+	}
 	// 根据BuyerId 查询其所对应的 cartList
 	public List<Cart> findCartsByBuyerId(int buyerId) {
 		return DbUtil.changeIntoObj(Cart.class, CartDao.findCartsByBuyerId(buyerId));
