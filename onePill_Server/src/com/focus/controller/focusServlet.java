@@ -108,6 +108,23 @@ public class focusServlet extends HttpServlet {
 				response.getWriter().append("no");
 			}
 			break;
+		case "isHave":
+			int userId3 = Integer.valueOf(request.getParameter("userId"));
+			int userType3 = Integer.valueOf(request.getParameter("userType"));
+			int type1 = Integer.valueOf(request.getParameter("type"));
+			int typeId1 = Integer.valueOf(request.getParameter("typeId"));
+			try {
+				b=fDao.isHave(userId3, userType3, type1, typeId1);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(!b) {
+				response.getWriter().append("yes");
+			}else {
+				response.getWriter().append("no");
+			}
+			break;
 		default:
 			break;
 		}

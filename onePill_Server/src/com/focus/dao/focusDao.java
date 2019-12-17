@@ -141,4 +141,32 @@ public class focusDao {
 			return fus;
 			
 		}
+		
+		
+		
+public boolean isHave(int userId,int userType,int type,int typeId) throws SQLException {
+			
+			Boolean fus = false;//操作结果
+			int i = 0;
+			java.sql.Connection connection = null;
+			PreparedStatement pstm = null;
+			
+			connection = DbUtil.getCon();
+			String sql = "select * from tbl_focus where userId="+userId+" and userType="+userType+" and type="+type+" and typeId="+typeId;
+			//取消自动提交
+			connection.setAutoCommit(false);
+			pstm = connection.prepareStatement(sql);
+			i = pstm.executeUpdate();
+			pstm.close();
+			connection.commit();
+			if(i!=0)
+				fus = true;
+			else
+				fus = false;
+			
+			return fus;
+			
+		}
+
+		
 }
