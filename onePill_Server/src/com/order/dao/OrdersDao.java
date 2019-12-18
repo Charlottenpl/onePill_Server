@@ -38,9 +38,11 @@ public class OrdersDao {
 			int userId = UserId;
 			int medicineId = rs.getInt("medicineId");
 			int count = rs.getInt("count");
-			int price = rs.getInt("price");
+			int status = rs.getInt("status");
+			int price = Integer.valueOf(mDao.searchMedicineById(medicineId).getPrice());
 			String imgString = mDao.searchMedicineById(medicineId).getImg1();
-			orders = new Orders(Id,userId,medicineId,count,imgString,price);
+			
+			orders = new Orders(Id,userId,medicineId,count,imgString,price,status);
 			ordersList.add(orders);
 			
 		}

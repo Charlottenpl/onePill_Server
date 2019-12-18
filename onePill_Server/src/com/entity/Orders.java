@@ -7,15 +7,17 @@ public class Orders {
     private int count;//数量
     private String img;
     private int price;
+    private int status;
 
 
-    public Orders(int id, int userId, int medicineId, int count, String img, int price) {
+    public Orders(int id, int userId, int medicineId, int count, String img, int price,int status) {
         this.id = id;
         this.userId = userId;
         this.medicineId = medicineId;
         this.count = count;
         this.img = img;
         this.price = price;
+        this.setStatus(status);
     }
     
     
@@ -66,6 +68,16 @@ public class Orders {
     public void setCount(int count) {
         this.count = count;
     }
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 
 }
