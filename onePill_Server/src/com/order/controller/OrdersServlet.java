@@ -59,12 +59,13 @@ public class OrdersServlet extends HttpServlet {
 					break;
 				case "add":
 					int userId1 = Integer.parseInt(request.getParameter("UserId"));
+					String imgString = request.getParameter("img");
 					int medicineId1 = Integer.parseInt(request.getParameter("medicineId"));
 					int count1 = Integer.parseInt(request.getParameter("count"));
 					int number1 = Integer.parseInt(request.getParameter("number"));
 					int status1 = Integer.parseInt(request.getParameter("status"));
 					try {
-						dao.add(userId1,medicineId1,count1,number1,status1);
+						dao.add(userId1,medicineId1,count1,number1,status1,imgString);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

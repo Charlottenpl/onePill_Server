@@ -13,15 +13,15 @@ import com.util.DbUtil;
 
 public class OrdersDao {
 	
-		public boolean add(int userId,int medicineId,int count,int number,int status) throws SQLException {
+		public boolean add(int userId,int medicineId,int count,int number,int status,String img) throws SQLException {
 		
 			Boolean f = false;//操作结果
 			int i = 0;
 			java.sql.Connection connection = null;
 			PreparedStatement pstm = null;
 			
-			String valuesName = "userId,medicineId,count,number,status";
-			String values = ""+userId+","+medicineId+","+count+","+number+","+status+"";
+			String valuesName = "userId,medicineId,count,number,status,img";
+			String values = ""+userId+","+medicineId+","+count+","+number+","+status+",'"+img+"'";
 		
 			connection = DbUtil.getCon();
 			String sql = String.format("insert into tbl_order"
