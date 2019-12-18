@@ -56,7 +56,26 @@ public class OrdersServlet extends HttpServlet {
 						response.getWriter().append(null);
 					}
 					response.getWriter().append(gson.toJson(ordersList));
-					break;	
+					break;
+				case "add":
+					int userId1 = Integer.parseInt(request.getParameter("UserId"));
+					int medicineId1 = Integer.parseInt(request.getParameter("medicineId"));
+					int count1 = Integer.parseInt(request.getParameter("count"));
+					int number1 = Integer.parseInt(request.getParameter("number"));
+					int status1 = Integer.parseInt(request.getParameter("status"));
+					try {
+						dao.add(userId1,medicineId1,count1,number1,status1);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					if (f) {
+						response.getWriter().append("yes");
+					}else {
+						response.getWriter().append("no");
+					}
+					break;
 				
 				default:
 					break;

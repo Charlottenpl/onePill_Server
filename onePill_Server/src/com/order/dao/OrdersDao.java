@@ -13,6 +13,35 @@ import com.util.DbUtil;
 
 public class OrdersDao {
 	
+		public boolean add(int userId,int medicineId,int count,int number,int status) throws SQLException {
+		
+			Boolean f = false;//操作结果
+			int i = 0;
+			java.sql.Connection connection = null;
+			PreparedStatement pstm = null;
+			
+			String valuesName = "userId,medicineId,count,number,status";
+			String values = ""+userId+","+medicineId+","+count+","+number+","+status+"";
+		
+			connection = DbUtil.getCon();
+			String sql = String.format("insert into tbl_order"
+					+ " (%s) values (%s)",valuesName,values);
+			//取消自动提交
+			connection.setAutoCommit(false);
+			pstm = connection.prepareStatement(sql);
+			i = pstm.executeUpdate();
+			pstm.close();
+			connection.commit();
+			if(i!=0)
+				f = true;
+			else
+				f = false;
+			
+			return f;
+			
+		}
+	
+	
 	/**
 	 * 查询订单
 	 * @param UserId
